@@ -1,0 +1,105 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>300</x><y>190</y><w>260</w><h>250</h></coordinates><panel_attributes>Area
+--
+- areas: vector&lt;Area*&gt;
+- doors: vector&lt;Door*&gt;
+- items: vector&lt;Key*&gt;
+- scul: Sculpture*
+- description: string
+--
+- is_number(n: string): bool
++ Area()
++ Area(s: Sculpture*, des: string)
++ ad_door(door: Door*, area: Area*): void
++ show_description_and_actions(): void
++ make_action(): pair&lt;int, int&gt;
++ check_scul(): void
++ pick_up_item(i: int, inv: Inventory*): void
++ use_door(i: int): int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>740</x><y>640</y><w>200</w><h>120</h></coordinates><panel_attributes>Door_Classic
+--
+- description: string
+- unlocked: bool
+--
++ Door_Classic()
++ Door_Classic(d: string, u: bool)
++ use_me(): int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>20</x><y>640</y><w>220</w><h>130</h></coordinates><panel_attributes>Door_Key
+--
+- description: string
+- unlocked: bool
+- key_id: int
+--
++ Door_Key()
++ Door_Key(k_i: int, d: string, u: bool)
++ use_me(): int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>430</x><y>640</y><w>300</w><h>190</h></coordinates><panel_attributes>Door_Riddle
+--
+- description: string
+- unlocked: bool
+- riddle: string
+- solution: string
+--
+- lowercase_and_no_whitespace(s: string): string
++ Door_Riddle()
++ Door_Riddle(d: string, r: string, s: string, u: bool)
++ get_riddle(): string
++ check_answer_to_riddle(answer: string): bool
++ use_me(): int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>180</x><y>460</y><w>180</w><h>110</h></coordinates><panel_attributes>Door
+--
+# description: string
+# unlocked: bool
+--
++ use_me(): int --&gt; virtual
++ get_description(): string
++ set_unlocked(u: bool): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>250</x><y>640</y><w>170</w><h>110</h></coordinates><panel_attributes>Exit
+--
+- description: string
+- unlocked: bool
+--
++ Exit()
++ Door_Classic(d: string)
++ use_me(): int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>630</x><y>60</y><w>320</w><h>210</h></coordinates><panel_attributes>Game
+--
+- tres: Treasure*
+- backpack: Inventory*
+- current: Area*
+- end: Area*
+--
++ Game()
++ Game(b: Inventory*, s: Area*, e: Area*, t: Treasure*)
++ run_game(): void
++ add_to_inventory(key: Key*): void
++ check_inventory(): void
++ explore_area(): void
++ look_for_key(key_id: int, i: int): bool</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1010</x><y>140</y><w>350</w><h>160</h></coordinates><panel_attributes>Inventory
+--
+- inv: multiset&lt;Key*&gt; inv
+--
++ Inventory()
++ Inventory(i: initializer_list&lt;Key*&gt;)
++ add_item(key: Key*): void
++ show_inventory(): void
++ try_to_put_treasure_together(treasure: Treasure*): bool
++ size_of_inv(): int
++ find_key(i: int): int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1110</x><y>360</y><w>190</w><h>160</h></coordinates><panel_attributes>Key
+--
+- name: string
+- description: string
+- id: int
+--
++ Key()
++ Key(n: string, d: string, i: int)
++ get_name(): string
++ get_description(): string
++ get_id(): int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>610</x><y>380</y><w>160</w><h>100</h></coordinates><panel_attributes>Sculpture
+--
+- description: string
+--
++ Sculpture()
++ Sculpture(d: string)
++ get_description: string</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1090</x><y>590</y><w>250</w><h>130</h></coordinates><panel_attributes>Treasure
+--
+- description: string
+- key_id: int
+- parts: int
+--
++ Treasure()
++ Treasure(p: int, n: string, d: string, i: int)
++ get_parts(): int</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1200</x><y>510</y><w>30</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>1190</x><y>160</y><w>220</w><h>220</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>170;10;200;10;200;160;10;160;10;200</additional_attributes></element><element><id>Relation</id><coordinates><x>940</x><y>100</y><w>270</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;250;10;250;40</additional_attributes></element><element><id>Relation</id><coordinates><x>440</x><y>120</y><w>210</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>190;10;10;10;10;70</additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>260</y><w>150</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;40;10;40;90;130;90;130;120</additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>240</y><w>630</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;50;10;50;80;610;80;610;120</additional_attributes></element><element><id>Relation</id><coordinates><x>250</x><y>150</y><w>180</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>50;70;10;70;10;10;160;10;160;40</additional_attributes></element><element><id>Relation</id><coordinates><x>250</x><y>230</y><w>70</w><h>250</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>50;10;10;10;10;230</additional_attributes></element><element><id>Relation</id><coordinates><x>120</x><y>560</y><w>100</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>80;10;80;50;10;50;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>240</x><y>560</y><w>110</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;50;90;50;90;80</additional_attributes></element><element><id>Relation</id><coordinates><x>300</x><y>560</y><w>290</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;40;270;40;270;80</additional_attributes></element><element><id>Relation</id><coordinates><x>340</x><y>560</y><w>520</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;30;500;30;500;80</additional_attributes></element><element><id>Relation</id><coordinates><x>940</x><y>80</y><w>490</w><h>530</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;470;10;470;480;300;480;300;510</additional_attributes></element></diagram>
