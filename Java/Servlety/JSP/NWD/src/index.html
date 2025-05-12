@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GCD Calculator</title>
+    <link rel="stylesheet" href="style.css"> <!-- Tutaj wskazujemy plik ze stylami -->
+</head>
+<body>
+<div class="container">
+    <h1>GCD</h1>
+    <p>Enter two numbers below and click "Calculate" to see their GCD.</p>
+
+    <form action="GCD.jsp"> <!-- Tutaj wskazujemy plik z akcjami -->
+        <label for="inputA">Enter First Number:</label>
+        <input type="number" id="inputA" min="1" max="2000000000" name="a" />
+        <label for="inputB">Enter Second Number:</label>
+        <input type="number" id="inputB" min="1" max="2000000000" name="b" />
+
+        <button type="submit">Calculate</button>
+    </form>
+</div>
+</body>
+</html>
